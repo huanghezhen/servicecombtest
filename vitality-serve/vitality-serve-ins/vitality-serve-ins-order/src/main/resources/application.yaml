@@ -1,0 +1,13 @@
+servicecomb-config-order: 100
+servicecomb:
+  service:
+    application: vitality
+    name: order
+    version: 0.0.1
+    environment: development
+    registry:
+      address: http://localhost:30100
+      instance:
+        watch: false
+  highway:
+    address: 0.0.0.0:7001

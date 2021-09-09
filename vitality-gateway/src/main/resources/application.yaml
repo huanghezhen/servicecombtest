@@ -1,0 +1,31 @@
+servicecomb-config-order: 100
+servicecomb:
+  request:
+    timeout: 2000
+  service:
+    application: vitality
+    name: gateway
+    version: 0.0.1
+    environment: development
+    registry:
+      address: http://localhost:30100
+      instance:
+        watch: false
+  rest:
+    address: 0.0.0.0:5000
+  http:
+    dispatcher:
+      edge:
+        url:
+          enabled: true
+          mappings:
+            pay:
+              path: "/pay/.*"
+              microserviceName: pay
+              versionRule: 0.0.1-2.0.0
+              prefixSegmentCount: 1
+            order:
+              path: "/order/.*"
+              microserviceName: order
+              versionRule: 0.0.1-2.0.0
+              prefixSegmentCount: 1
